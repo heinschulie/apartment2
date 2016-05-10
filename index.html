@@ -13,7 +13,7 @@
 		<link rel="image_src" href="indexdata/thumbnail.jpg" />
 		<!-- <meta name="directory" content="PATH/"></meta> -->
 		<!-- <link rel="target_url" href="index.html" /> -->
-		<meta name="generator" content="Panotour Pro V2.5.2 64bits - Trial Version" />
+		<meta name="generator" content="Panotour Pro V2.5.0 64bits" />
 
 		<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -24,6 +24,7 @@
 			* { padding: 0; margin: 0; }
 			html { height: 100%; }
 			body { height: 100%; overflow:hidden; }
+			@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (-webkit-min-device-pixel-ratio: 2) { body{ height: 100.18%; } }
 			div#container { height: 100%; min-height: 100%; width: 100%; margin: 0 auto; }
 			div#tourDIV {
 				height:100%;
@@ -96,9 +97,6 @@
 			}
 			jQuery( document ).ready(function() {
 				if (/(iphone|ipod|ipad|android|iemobile|webos|fennec|blackberry|kindle|series60|playbook|opera\smini|opera\smobi|opera\stablet|symbianos|palmsource|palmos|blazer|windows\sce|windows\sphone|wp7|bolt|doris|dorothy|gobrowser|iris|maemo|minimo|netfront|semc-browser|skyfire|teashark|teleca|uzardweb|avantgo|docomo|kddi|ddipocket|polaris|eudoraweb|opwv|plink|plucker|pie|xiino|benq|playbook|bb|cricket|dell|bb10|nintendo|up.browser|playstation|tear|mib|obigo|midp|mobile|tablet)/.test(navigator.userAgent.toLowerCase())) {
-					if(/iphone/.test(navigator.userAgent.toLowerCase()) && window.self === window.top){
-						jQuery('body').css('height', '100.18%'); 
-					}
 					// add event listener on resize event (for orientation change)
 					if (window.addEventListener) {
 						window.addEventListener("load", readDeviceOrientation);
@@ -156,16 +154,6 @@
 					removepano('krpanoSWFObject');
 				}
 			}
-		    function isVRModeRequested() {
-				var querystr = window.location.search.substring(1);
-				var params = querystr.split('&');
-				for (var i=0; i<params.length; i++){
-					if (params[i].toLowerCase() == "vr"){
-						return true;
-					}
-				}
-				return false;
-			}
 		</script>
 	</head>
 	<body>
@@ -196,11 +184,7 @@
 
 				<script type="text/javascript" src="indexdata/index.js"></script>
 				<script type="text/javascript">
-					if (isVRModeRequested()){
-						accessWebVr();
-					}else{
-						accessStdVr();
-					}
+					accessStdVr();
 				</script>
 			</div>
 		</div>
